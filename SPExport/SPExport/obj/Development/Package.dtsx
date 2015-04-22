@@ -1,0 +1,2855 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/22/2015 9:44:58 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="JOHNHOANG-PC"
+  DTS:CreatorName="johnhoang-PC\johnhoang"
+  DTS:DTSID="{A346F446-6B72-428D-8670-AD40C2FCC5E0}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.3436.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{2C9A89D0-A895-464A-A2DE-E11C4A9F6C61}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PRODSQL\SQLEXPRESS.SSDHeathKit.vn]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{8114EFAE-16F3-4A7E-85BF-C3AEA5FDAD29}"
+      DTS:ObjectName="PRODSQL\SQLEXPRESS.SSDHeathKit.vn">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=PRODSQL\SQLEXPRESS;User ID=vn;Initial Catalog=SSDHeathKit;Application Name=SSIS-Package-{8114EFAE-16F3-4A7E-85BF-C3AEA5FDAD29}PRODSQL\SQLEXPRESS.SSDHeathKit.vn;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAx3xL1+oSaEOWKrKYFrQuXwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAA0T8S7a5DXkIfLkZbYchWEAbsrIlUUxsShbsp52joy+AAAAAAOgAAAAAIAACAAAABprVw959tFNqH9ADzZ9kP38CVpMBx86CHdcnEPs7ftLyAAAAB0AoRc4+jjcbHRJ6YTzUJcZdwwb3FpE9miVNFEATW4cEAAAABhPB/P47KSoxRk+x76lQ5NDowFWfKLLCLcCK86RAnCAMOHkjBnG2EGl+JFNbk2TnAwh3RZKTzi/OtvpyqusL5y</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SharePoint Credential]"
+      DTS:CreationName="SPCRED"
+      DTS:DTSID="{8BD425F8-3D75-497F-9133-B0D70DBD316D}"
+      DTS:ObjectName="SharePoint Credential">
+      <DTS:ObjectData>
+        <SPConnectionManager />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F86A2D3E-3B73-4A37-A1B3-DCE995A844FC}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\ADO NET Destination"
+              componentClassID="{874F7595-FB5F-40FF-96AF-FBFF8250E3EF}"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="ADO NET Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version= 11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">"dbo"."EnduranceData"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.SqlServer.Dts.Pipeline.ADONETDestination, Microsoft.SqlServer.ADONETDest, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\ADO NET Destination.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PRODSQL\SQLEXPRESS.SSDHeathKit.vn]"
+                  connectionManagerRefId="Package.ConnectionManagers[PRODSQL\SQLEXPRESS.SSDHeathKit.vn]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ID]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Raw Capacity (GB)]"
+                      cachedDataType="r8"
+                      cachedName="Raw Capacity (GB)"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[RawCapacity]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Raw Capacity (GB)]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[StorFly CE Capacity (GB)]"
+                      cachedDataType="r8"
+                      cachedName="StorFly CE Capacity (GB)"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[StorFlyCECapcity]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[StorFly CE Capacity (GB)]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[TBW (TB) - Sequential]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TBW (TB) - Sequential"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TBW]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[TBW (TB) - Sequential]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Firmware Rev. (LinkTitle)]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="Firmware Rev. (LinkTitle)"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[FirmwareRev]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Firmware Rev. (LinkTitle)]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Drive Writes - Sequential]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Drive Writes - Sequential"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DriveWritesSequential]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Drive Writes - Sequential]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DW/day (3 years) - Sequential]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DW/day (3 years) - Sequential"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DWDaySequential]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[DW/day (3 years) - Sequential]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[TBW (TB) - JEDEC 219]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TBW (TB) - JEDEC 219"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TBWJEDEC]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[TBW (TB) - JEDEC 219]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Drive Writes - JEDEC 219]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Drive Writes - JEDEC 219"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DWDayJEDEC]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Drive Writes - JEDEC 219]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DW/day (3 years) - JEDEC 219]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DW/day (3 years) - JEDEC 219"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DriveWritesJEDEC]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[DW/day (3 years) - JEDEC 219]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[WLE - Sequential]"
+                      cachedDataType="r8"
+                      cachedName="WLE - Sequential"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[WLESequential]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[WLE - Sequential]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[WA - Sequential]"
+                      cachedDataType="r8"
+                      cachedName="WA - Sequential"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[WASequential]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[WA - Sequential]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[WLE - JEDEC 219]"
+                      cachedDataType="r8"
+                      cachedName="WLE - JEDEC 219"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[WLEJEDEC]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[WLE - JEDEC 219]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[WA - JEDEC 219]"
+                      cachedDataType="r8"
+                      cachedName="WA - JEDEC 219"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[WAJEDEC]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[WA - JEDEC 219]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[RawCapacity]"
+                      dataType="wstr"
+                      length="1024"
+                      name="RawCapacity" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[StorFlyCECapcity]"
+                      dataType="wstr"
+                      length="1024"
+                      name="StorFlyCECapcity" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TBW]"
+                      dataType="wstr"
+                      length="1024"
+                      name="TBW" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[FirmwareRev]"
+                      dataType="wstr"
+                      length="1024"
+                      name="FirmwareRev" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DriveWritesSequential]"
+                      dataType="wstr"
+                      length="1024"
+                      name="DriveWritesSequential" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DWDaySequential]"
+                      dataType="wstr"
+                      length="1024"
+                      name="DWDaySequential" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[TBWJEDEC]"
+                      dataType="wstr"
+                      length="1024"
+                      name="TBWJEDEC" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DWDayJEDEC]"
+                      dataType="wstr"
+                      length="1024"
+                      name="DWDayJEDEC" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DriveWritesJEDEC]"
+                      dataType="wstr"
+                      length="1024"
+                      name="DriveWritesJEDEC" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[WLESequential]"
+                      dataType="wstr"
+                      length="1024"
+                      name="WLESequential" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[WASequential]"
+                      dataType="wstr"
+                      length="1024"
+                      name="WASequential" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[WLEJEDEC]"
+                      dataType="wstr"
+                      length="1024"
+                      name="WLEJEDEC" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[WAJEDEC]"
+                      dataType="wstr"
+                      length="1024"
+                      name="WAJEDEC" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\SharePoint List Source"
+              componentClassID="{874F7595-FB5F-40FF-96AF-FBFF8250E3EF}"
+              description="Extract data from SharePoint lists"
+              name="SharePoint List Source">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.Samples.SqlServer.SSIS.SharePointListAdapters.SharePointListSource, SharePointListAdapters, Version=1.2012.0.0, Culture=neutral, PublicKeyToken=f4b3011e1ece9d47</property>
+                <property
+                  dataType="System.String"
+                  description="Path to SharePoint site / subsite that contains the list."
+                  expressionType="Notify"
+                  name="SiteUrl">http://everest.virtium.com/engineering/FAE</property>
+                <property
+                  dataType="System.String"
+                  description="Name of the SharePoint list to load data from."
+                  expressionType="Notify"
+                  name="SiteListName">Endurance Data - StorFly CE</property>
+                <property
+                  dataType="System.String"
+                  description="Name of the view within SharePoint list to load data from."
+                  expressionType="Notify"
+                  name="SiteListViewName">test</property>
+                <property
+                  dataType="System.String"
+                  description="Culture to use when communicating with remote SharePoint Server (en-US)."
+                  expressionType="Notify"
+                  name="SharePointCulture">en-US</property>
+                <property
+                  dataType="System.String"
+                  description="CAML Query to use to more specifically pull back the rows you are interested in from SharePoint (Look up syntax of using this XML Element: &lt;Query /&gt;)"
+                  expressionType="Notify"
+                  name="CamlQuery">&lt;Query /&gt;</property>
+                <property
+                  dataType="System.Int16"
+                  description="# of elements to pull from the Webservice at a time."
+                  name="BatchSize"
+                  typeConverter="System.Int16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="When loading items, should subfolders within the list also be loaded. Set to 'true' to load child folders."
+                  name="IsRecursive"
+                  typeConverter="Microsoft.Samples.SqlServer.SSIS.SharePointListAdapters.Enums.TrueFalseValue, SharePointListAdapters, Version=1.2012.0.0, Culture=neutral, PublicKeyToken=f4b3011e1ece9d47">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Whether to return folders with the list content"
+                  name="IncludeFolders"
+                  typeConverter="Microsoft.Samples.SqlServer.SSIS.SharePointListAdapters.Enums.TrueFalseValue, SharePointListAdapters, Version=1.2012.0.0, Culture=neutral, PublicKeyToken=f4b3011e1ece9d47">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Whether to return colunmns SharePoint considers hidden"
+                  name="IncludeHiddenColumns"
+                  typeConverter="Microsoft.Samples.SqlServer.SSIS.SharePointListAdapters.Enums.TrueFalseValue, SharePointListAdapters, Version=1.2012.0.0, Culture=neutral, PublicKeyToken=f4b3011e1ece9d47">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Whether to decode lookups and make an ID/Value column for each (newline delimited)"
+                  name="DecodeLookupColumns"
+                  typeConverter="Microsoft.Samples.SqlServer.SSIS.SharePointListAdapters.Enums.TrueFalseValue, SharePointListAdapters, Version=1.2012.0.0, Culture=neutral, PublicKeyToken=f4b3011e1ece9d47">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Whether to use a connection manager for this component"
+                  name="UseConnectionManager"
+                  typeConverter="Microsoft.Samples.SqlServer.SSIS.SharePointListAdapters.Enums.TrueFalseValue, SharePointListAdapters, Version=1.2012.0.0, Culture=neutral, PublicKeyToken=f4b3011e1ece9d47">1</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\SharePoint List Source.Connections[Sharepoint Credential Connection]"
+                  connectionManagerID="Package.ConnectionManagers[SharePoint Credential]"
+                  connectionManagerRefId="Package.ConnectionManagers[SharePoint Credential]"
+                  name="Sharepoint Credential Connection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output]"
+                  description="Endurance Data - StorFly CE"
+                  name="Public List Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[ID]"
+                      dataType="i4"
+                      description="ID"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[ID]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[ID]"
+                      name="ID">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">ID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Raw Capacity (GB)]"
+                      dataType="r8"
+                      description="Raw Capacity (GB)"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Raw Capacity (GB)]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Raw Capacity (GB)]"
+                      name="Raw Capacity (GB)">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Raw_x0020_Capacity</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[StorFly CE Capacity (GB)]"
+                      dataType="r8"
+                      description="StorFly CE Capacity (GB)"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[StorFly CE Capacity (GB)]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[StorFly CE Capacity (GB)]"
+                      name="StorFly CE Capacity (GB)">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">CE_x0020_Capacity</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[TBW (TB) - Sequential]"
+                      dataType="wstr"
+                      description="TBW (TB) - Sequential"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[TBW (TB) - Sequential]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[TBW (TB) - Sequential]"
+                      name="TBW (TB) - Sequential">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">TBW_x0020_Sequential_x0020__x002</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Firmware Rev. (LinkTitle)]"
+                      dataType="wstr"
+                      description="Firmware Rev."
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Firmware Rev. (LinkTitle)]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Firmware Rev. (LinkTitle)]"
+                      name="Firmware Rev. (LinkTitle)">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">LinkTitle</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Drive Writes - Sequential]"
+                      dataType="wstr"
+                      description="Drive Writes - Sequential"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Drive Writes - Sequential]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Drive Writes - Sequential]"
+                      name="Drive Writes - Sequential">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Drive_x0020_Writes_x0020__x002d_</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[DW/day (3 years) - Sequential]"
+                      dataType="wstr"
+                      description="DW/day (3 years) - Sequential"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[DW/day (3 years) - Sequential]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[DW/day (3 years) - Sequential]"
+                      name="DW/day (3 years) - Sequential">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Drive_x0020_Writes_x0020_per_x00</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[TBW (TB) - JEDEC 219]"
+                      dataType="wstr"
+                      description="TBW (TB) - JEDEC 219"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[TBW (TB) - JEDEC 219]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[TBW (TB) - JEDEC 219]"
+                      name="TBW (TB) - JEDEC 219">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">TBW_x0020__x0028_TB_x0029__x0020</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Drive Writes - JEDEC 219]"
+                      dataType="wstr"
+                      description="Drive Writes - JEDEC 219"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Drive Writes - JEDEC 219]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Drive Writes - JEDEC 219]"
+                      name="Drive Writes - JEDEC 219">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Drive_x0020_Writes_x0020__x002d_0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[DW/day (3 years) - JEDEC 219]"
+                      dataType="wstr"
+                      description="DW/day (3 years) - JEDEC 219"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[DW/day (3 years) - JEDEC 219]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[DW/day (3 years) - JEDEC 219]"
+                      name="DW/day (3 years) - JEDEC 219">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Drive_x0020_Writes_x0020_per_x000</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Firmware Rev. (Title)]"
+                      dataType="wstr"
+                      description="Firmware Rev."
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Firmware Rev. (Title)]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Firmware Rev. (Title)]"
+                      name="Firmware Rev. (Title)">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Title</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[WLE - Sequential]"
+                      dataType="r8"
+                      description="WLE - Sequential"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[WLE - Sequential]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[WLE - Sequential]"
+                      name="WLE - Sequential">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">WLE_x0020_Sequential</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[WA - Sequential]"
+                      dataType="r8"
+                      description="WA - Sequential"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[WA - Sequential]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[WA - Sequential]"
+                      name="WA - Sequential">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">WA_x0020_Sequential</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[WLE - JEDEC 219]"
+                      dataType="r8"
+                      description="WLE - JEDEC 219"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[WLE - JEDEC 219]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[WLE - JEDEC 219]"
+                      name="WLE - JEDEC 219">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">WLE_x0020__x002d__x0020_JEDEC_x0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[WA - JEDEC 219]"
+                      dataType="r8"
+                      description="WA - JEDEC 219"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[WA - JEDEC 219]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[WA - JEDEC 219]"
+                      name="WA - JEDEC 219">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">WA_x0020__x002d__x0020_JEDEC_x00</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Content Type ID]"
+                      dataType="wstr"
+                      description="Content Type ID"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Content Type ID]"
+                      length="1024"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Content Type ID]"
+                      name="Content Type ID">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">ContentTypeId</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Approver Comments]"
+                      dataType="nText"
+                      description="Approver Comments"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Approver Comments]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Approver Comments]"
+                      name="Approver Comments">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">_ModerationComments</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[File Type]"
+                      dataType="wstr"
+                      description="File Type"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[File Type]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[File Type]"
+                      name="File Type">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">File_x0020_Type</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Firmware Rev. (LinkTitleNoMenu)]"
+                      dataType="wstr"
+                      description="Firmware Rev."
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Firmware Rev. (LinkTitleNoMenu)]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Firmware Rev. (LinkTitleNoMenu)]"
+                      name="Firmware Rev. (LinkTitleNoMenu)">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">LinkTitleNoMenu</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Firmware Rev. (LinkTitle2)]"
+                      dataType="wstr"
+                      description="Firmware Rev."
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Firmware Rev. (LinkTitle2)]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Firmware Rev. (LinkTitle2)]"
+                      name="Firmware Rev. (LinkTitle2)">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">LinkTitle2</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Link to data source]"
+                      dataType="wstr"
+                      description="Link to data source"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Link to data source]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Link to data source]"
+                      name="Link to data source">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Link_x0020_to_x0020_data_x0020_s</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Comments]"
+                      dataType="nText"
+                      description="Comments"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Comments]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Comments]"
+                      name="Comments">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Comments</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Content Type]"
+                      dataType="wstr"
+                      description="Content Type"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Content Type]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Content Type]"
+                      name="Content Type">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">ContentType</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Modified]"
+                      dataType="dbTimeStamp"
+                      description="Modified"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Modified]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Modified]"
+                      name="Modified">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Modified</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Created]"
+                      dataType="dbTimeStamp"
+                      description="Created"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Created]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Created]"
+                      name="Created">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Created</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Created By]"
+                      dataType="wstr"
+                      description="Created By"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Created By]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Created By]"
+                      name="Created By">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Author</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Modified By]"
+                      dataType="wstr"
+                      description="Modified By"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Modified By]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Modified By]"
+                      name="Modified By">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Editor</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Has Copy Destinations]"
+                      dataType="bool"
+                      description="Has Copy Destinations"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Has Copy Destinations]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Has Copy Destinations]"
+                      name="Has Copy Destinations">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">_HasCopyDestinations</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Copy Source]"
+                      dataType="wstr"
+                      description="Copy Source"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Copy Source]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Copy Source]"
+                      name="Copy Source">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">_CopySource</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[owshiddenversion]"
+                      dataType="i4"
+                      description="owshiddenversion"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[owshiddenversion]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[owshiddenversion]"
+                      name="owshiddenversion">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">owshiddenversion</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Workflow Version]"
+                      dataType="i4"
+                      description="Workflow Version"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Workflow Version]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Workflow Version]"
+                      name="Workflow Version">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">WorkflowVersion</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[UI Version]"
+                      dataType="i4"
+                      description="UI Version"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[UI Version]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[UI Version]"
+                      name="UI Version">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">_UIVersion</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Version]"
+                      dataType="wstr"
+                      description="Version"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Version]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Version]"
+                      name="Version">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">_UIVersionString</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Attachments]"
+                      dataType="bool"
+                      description="Attachments"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Attachments]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Attachments]"
+                      name="Attachments">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Attachments</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Edit]"
+                      dataType="wstr"
+                      description="Edit"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Edit]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Edit]"
+                      name="Edit">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Edit</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Select]"
+                      dataType="wstr"
+                      description="Select"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Select]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Select]"
+                      name="Select">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">SelectTitle</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Instance ID]"
+                      dataType="i4"
+                      description="Instance ID"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Instance ID]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Instance ID]"
+                      name="Instance ID">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">InstanceID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Order]"
+                      dataType="r8"
+                      description="Order"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Order]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Order]"
+                      name="Order">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Order</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[GUID]"
+                      dataType="guid"
+                      description="GUID"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[GUID]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[GUID]"
+                      name="GUID">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">GUID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Workflow Instance ID]"
+                      dataType="guid"
+                      description="Workflow Instance ID"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Workflow Instance ID]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Workflow Instance ID]"
+                      name="Workflow Instance ID">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">WorkflowInstanceID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Effective Permissions Mask]"
+                      dataType="wstr"
+                      description="Effective Permissions Mask"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Effective Permissions Mask]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Effective Permissions Mask]"
+                      name="Effective Permissions Mask">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">PermMask</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Name (FileLeafRef)]"
+                      dataType="wstr"
+                      description="Name"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Name (FileLeafRef)]"
+                      length="256"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Name (FileLeafRef)]"
+                      name="Name (FileLeafRef)">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">FileLeafRef</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[HTML File Type]"
+                      dataType="wstr"
+                      description="HTML File Type"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[HTML File Type]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[HTML File Type]"
+                      name="HTML File Type">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">HTML_x0020_File_x0020_Type</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Edit Menu Table Start (_EditMenuTableStart)]"
+                      dataType="wstr"
+                      description="Edit Menu Table Start"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Edit Menu Table Start (_EditMenuTableStart)]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Edit Menu Table Start (_EditMenuTableStart)]"
+                      name="Edit Menu Table Start (_EditMenuTableStart)">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">_EditMenuTableStart</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Edit Menu Table Start (_EditMenuTableStart2)]"
+                      dataType="wstr"
+                      description="Edit Menu Table Start"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Edit Menu Table Start (_EditMenuTableStart2)]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Edit Menu Table Start (_EditMenuTableStart2)]"
+                      name="Edit Menu Table Start (_EditMenuTableStart2)">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">_EditMenuTableStart2</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Edit Menu Table End]"
+                      dataType="wstr"
+                      description="Edit Menu Table End"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Edit Menu Table End]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Edit Menu Table End]"
+                      name="Edit Menu Table End">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">_EditMenuTableEnd</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Name (LinkFilenameNoMenu)]"
+                      dataType="wstr"
+                      description="Name"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Name (LinkFilenameNoMenu)]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Name (LinkFilenameNoMenu)]"
+                      name="Name (LinkFilenameNoMenu)">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">LinkFilenameNoMenu</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Name (LinkFilename)]"
+                      dataType="wstr"
+                      description="Name"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Name (LinkFilename)]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Name (LinkFilename)]"
+                      name="Name (LinkFilename)">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">LinkFilename</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Name (LinkFilename2)]"
+                      dataType="wstr"
+                      description="Name"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Name (LinkFilename2)]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Name (LinkFilename2)]"
+                      name="Name (LinkFilename2)">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">LinkFilename2</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Type]"
+                      dataType="wstr"
+                      description="Type"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Type]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Type]"
+                      name="Type">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">DocIcon</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Server Relative URL]"
+                      dataType="wstr"
+                      description="Server Relative URL"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Server Relative URL]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Server Relative URL]"
+                      name="Server Relative URL">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">ServerUrl</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Encoded Absolute URL]"
+                      dataType="wstr"
+                      description="Encoded Absolute URL"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Encoded Absolute URL]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Encoded Absolute URL]"
+                      name="Encoded Absolute URL">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">EncodedAbsUrl</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[File Name]"
+                      dataType="wstr"
+                      description="File Name"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[File Name]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[File Name]"
+                      name="File Name">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">BaseName</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Level]"
+                      dataType="i4"
+                      description="Level"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Level]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Level]"
+                      name="Level">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">_Level</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Is Current Version]"
+                      dataType="bool"
+                      description="Is Current Version"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Is Current Version]"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Is Current Version]"
+                      name="Is Current Version">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">_IsCurrentVersion</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Hardware Lookup Choices]"
+                      dataType="wstr"
+                      description="Hardware Lookup Choices"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Hardware Lookup Choices]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Hardware Lookup Choices]"
+                      name="Hardware Lookup Choices">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Hardware_$$LookupChoices</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[URL Path Lookup Values]"
+                      dataType="wstr"
+                      description="URL Path Lookup Values"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[URL Path Lookup Values]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[URL Path Lookup Values]"
+                      name="URL Path Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">FileRef_$$LookupValue</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Path Lookup Values]"
+                      dataType="wstr"
+                      description="Path Lookup Values"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Path Lookup Values]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Path Lookup Values]"
+                      name="Path Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">FileDirRef_$$LookupValue</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Modified Lookup Values]"
+                      dataType="wstr"
+                      description="Modified Lookup Values"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Modified Lookup Values]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Modified Lookup Values]"
+                      name="Modified Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Last_x0020_Modified_$$LookupValue</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Created Lookup Values]"
+                      dataType="wstr"
+                      description="Created Lookup Values"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Created Lookup Values]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Created Lookup Values]"
+                      name="Created Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Created_x0020_Date_$$LookupValue</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Item Type Lookup Values]"
+                      dataType="wstr"
+                      description="Item Type Lookup Values"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Item Type Lookup Values]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Item Type Lookup Values]"
+                      name="Item Type Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">FSObjType_$$LookupValue</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Sort Type Lookup Values]"
+                      dataType="wstr"
+                      description="Sort Type Lookup Values"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Sort Type Lookup Values]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Sort Type Lookup Values]"
+                      name="Sort Type Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">SortBehavior_$$LookupValue</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Unique Id Lookup Values]"
+                      dataType="wstr"
+                      description="Unique Id Lookup Values"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Unique Id Lookup Values]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Unique Id Lookup Values]"
+                      name="Unique Id Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">UniqueId_$$LookupValue</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Client Id Lookup Values]"
+                      dataType="wstr"
+                      description="Client Id Lookup Values"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Client Id Lookup Values]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Client Id Lookup Values]"
+                      name="Client Id Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">SyncClientId_$$LookupValue</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[ProgId Lookup Values]"
+                      dataType="wstr"
+                      description="ProgId Lookup Values"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[ProgId Lookup Values]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[ProgId Lookup Values]"
+                      name="ProgId Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">ProgId_$$LookupValue</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[ScopeId Lookup Values]"
+                      dataType="wstr"
+                      description="ScopeId Lookup Values"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[ScopeId Lookup Values]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[ScopeId Lookup Values]"
+                      name="ScopeId Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">ScopeId_$$LookupValue</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Property Bag Lookup Values]"
+                      dataType="wstr"
+                      description="Property Bag Lookup Values"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Property Bag Lookup Values]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Property Bag Lookup Values]"
+                      name="Property Bag Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">MetaInfo_$$LookupValue</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Item Child Count Lookup Values]"
+                      dataType="wstr"
+                      description="Item Child Count Lookup Values"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Item Child Count Lookup Values]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Item Child Count Lookup Values]"
+                      name="Item Child Count Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">ItemChildCount_$$LookupValue</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Folder Child Count Lookup Values]"
+                      dataType="wstr"
+                      description="Folder Child Count Lookup Values"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Folder Child Count Lookup Values]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Folder Child Count Lookup Values]"
+                      name="Folder Child Count Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">FolderChildCount_$$LookupValue</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[App Created By Lookup Values]"
+                      dataType="wstr"
+                      description="App Created By Lookup Values"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[App Created By Lookup Values]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[App Created By Lookup Values]"
+                      name="App Created By Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">AppAuthor_$$LookupValue</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[App Modified By Lookup Values]"
+                      dataType="wstr"
+                      description="App Modified By Lookup Values"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[App Modified By Lookup Values]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[App Modified By Lookup Values]"
+                      name="App Modified By Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">AppEditor_$$LookupValue</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Approval Status Lookup IDs]"
+                      dataType="wstr"
+                      description="Approval Status Lookup IDs"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Approval Status Lookup IDs]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Approval Status Lookup IDs]"
+                      name="Approval Status Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">_ModerationStatus_$$LookupID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[URL Path Lookup IDs]"
+                      dataType="wstr"
+                      description="URL Path Lookup IDs"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[URL Path Lookup IDs]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[URL Path Lookup IDs]"
+                      name="URL Path Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">FileRef_$$LookupID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Path Lookup IDs]"
+                      dataType="wstr"
+                      description="Path Lookup IDs"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Path Lookup IDs]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Path Lookup IDs]"
+                      name="Path Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">FileDirRef_$$LookupID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Modified Lookup IDs]"
+                      dataType="wstr"
+                      description="Modified Lookup IDs"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Modified Lookup IDs]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Modified Lookup IDs]"
+                      name="Modified Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Last_x0020_Modified_$$LookupID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Created Lookup IDs]"
+                      dataType="wstr"
+                      description="Created Lookup IDs"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Created Lookup IDs]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Created Lookup IDs]"
+                      name="Created Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Created_x0020_Date_$$LookupID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Item Type Lookup IDs]"
+                      dataType="wstr"
+                      description="Item Type Lookup IDs"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Item Type Lookup IDs]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Item Type Lookup IDs]"
+                      name="Item Type Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">FSObjType_$$LookupID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Sort Type Lookup IDs]"
+                      dataType="wstr"
+                      description="Sort Type Lookup IDs"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Sort Type Lookup IDs]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Sort Type Lookup IDs]"
+                      name="Sort Type Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">SortBehavior_$$LookupID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Unique Id Lookup IDs]"
+                      dataType="wstr"
+                      description="Unique Id Lookup IDs"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Unique Id Lookup IDs]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Unique Id Lookup IDs]"
+                      name="Unique Id Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">UniqueId_$$LookupID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Client Id Lookup IDs]"
+                      dataType="wstr"
+                      description="Client Id Lookup IDs"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Client Id Lookup IDs]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Client Id Lookup IDs]"
+                      name="Client Id Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">SyncClientId_$$LookupID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[ProgId Lookup IDs]"
+                      dataType="wstr"
+                      description="ProgId Lookup IDs"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[ProgId Lookup IDs]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[ProgId Lookup IDs]"
+                      name="ProgId Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">ProgId_$$LookupID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[ScopeId Lookup IDs]"
+                      dataType="wstr"
+                      description="ScopeId Lookup IDs"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[ScopeId Lookup IDs]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[ScopeId Lookup IDs]"
+                      name="ScopeId Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">ScopeId_$$LookupID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Property Bag Lookup IDs]"
+                      dataType="wstr"
+                      description="Property Bag Lookup IDs"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Property Bag Lookup IDs]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Property Bag Lookup IDs]"
+                      name="Property Bag Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">MetaInfo_$$LookupID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Item Child Count Lookup IDs]"
+                      dataType="wstr"
+                      description="Item Child Count Lookup IDs"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Item Child Count Lookup IDs]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Item Child Count Lookup IDs]"
+                      name="Item Child Count Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">ItemChildCount_$$LookupID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Folder Child Count Lookup IDs]"
+                      dataType="wstr"
+                      description="Folder Child Count Lookup IDs"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Folder Child Count Lookup IDs]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[Folder Child Count Lookup IDs]"
+                      name="Folder Child Count Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">FolderChildCount_$$LookupID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[App Created By Lookup IDs]"
+                      dataType="wstr"
+                      description="App Created By Lookup IDs"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[App Created By Lookup IDs]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[App Created By Lookup IDs]"
+                      name="App Created By Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">AppAuthor_$$LookupID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[App Modified By Lookup IDs]"
+                      dataType="wstr"
+                      description="App Modified By Lookup IDs"
+                      externalMetadataColumnId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[App Modified By Lookup IDs]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].Columns[App Modified By Lookup IDs]"
+                      name="App Modified By Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">AppEditor_$$LookupID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[ID]"
+                      dataType="i4"
+                      description="ID"
+                      name="ID">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">ID</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Raw Capacity (GB)]"
+                      dataType="r8"
+                      description="Raw Capacity (GB)"
+                      name="Raw Capacity (GB)">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Raw_x0020_Capacity</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[StorFly CE Capacity (GB)]"
+                      dataType="r8"
+                      description="StorFly CE Capacity (GB)"
+                      name="StorFly CE Capacity (GB)">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">CE_x0020_Capacity</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[TBW (TB) - Sequential]"
+                      dataType="wstr"
+                      description="TBW (TB) - Sequential"
+                      length="255"
+                      name="TBW (TB) - Sequential">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">TBW_x0020_Sequential_x0020__x002</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Firmware Rev. (LinkTitle)]"
+                      dataType="wstr"
+                      description="Firmware Rev."
+                      length="4000"
+                      name="Firmware Rev. (LinkTitle)">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">LinkTitle</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Drive Writes - Sequential]"
+                      dataType="wstr"
+                      description="Drive Writes - Sequential"
+                      length="255"
+                      name="Drive Writes - Sequential">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Drive_x0020_Writes_x0020__x002d_</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[DW/day (3 years) - Sequential]"
+                      dataType="wstr"
+                      description="DW/day (3 years) - Sequential"
+                      length="255"
+                      name="DW/day (3 years) - Sequential">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Drive_x0020_Writes_x0020_per_x00</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[TBW (TB) - JEDEC 219]"
+                      dataType="wstr"
+                      description="TBW (TB) - JEDEC 219"
+                      length="255"
+                      name="TBW (TB) - JEDEC 219">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">TBW_x0020__x0028_TB_x0029__x0020</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Drive Writes - JEDEC 219]"
+                      dataType="wstr"
+                      description="Drive Writes - JEDEC 219"
+                      length="255"
+                      name="Drive Writes - JEDEC 219">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Drive_x0020_Writes_x0020__x002d_0</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[DW/day (3 years) - JEDEC 219]"
+                      dataType="wstr"
+                      description="DW/day (3 years) - JEDEC 219"
+                      length="255"
+                      name="DW/day (3 years) - JEDEC 219">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Drive_x0020_Writes_x0020_per_x000</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Firmware Rev. (Title)]"
+                      dataType="wstr"
+                      description="Firmware Rev."
+                      length="10"
+                      name="Firmware Rev. (Title)">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Title</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[WLE - Sequential]"
+                      dataType="r8"
+                      description="WLE - Sequential"
+                      name="WLE - Sequential">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">WLE_x0020_Sequential</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[WA - Sequential]"
+                      dataType="r8"
+                      description="WA - Sequential"
+                      name="WA - Sequential">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">WA_x0020_Sequential</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[WLE - JEDEC 219]"
+                      dataType="r8"
+                      description="WLE - JEDEC 219"
+                      name="WLE - JEDEC 219">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">WLE_x0020__x002d__x0020_JEDEC_x0</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[WA - JEDEC 219]"
+                      dataType="r8"
+                      description="WA - JEDEC 219"
+                      name="WA - JEDEC 219">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">WA_x0020__x002d__x0020_JEDEC_x00</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Content Type ID]"
+                      dataType="wstr"
+                      description="Content Type ID"
+                      length="1024"
+                      name="Content Type ID">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">ContentTypeId</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Approver Comments]"
+                      dataType="nText"
+                      description="Approver Comments"
+                      name="Approver Comments">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">_ModerationComments</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[File Type]"
+                      dataType="wstr"
+                      description="File Type"
+                      length="255"
+                      name="File Type">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">File_x0020_Type</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Firmware Rev. (LinkTitleNoMenu)]"
+                      dataType="wstr"
+                      description="Firmware Rev."
+                      length="4000"
+                      name="Firmware Rev. (LinkTitleNoMenu)">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">LinkTitleNoMenu</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Firmware Rev. (LinkTitle2)]"
+                      dataType="wstr"
+                      description="Firmware Rev."
+                      length="4000"
+                      name="Firmware Rev. (LinkTitle2)">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">LinkTitle2</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Link to data source]"
+                      dataType="wstr"
+                      description="Link to data source"
+                      length="4000"
+                      name="Link to data source">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Link_x0020_to_x0020_data_x0020_s</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Comments]"
+                      dataType="nText"
+                      description="Comments"
+                      name="Comments">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Comments</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Content Type]"
+                      dataType="wstr"
+                      description="Content Type"
+                      length="4000"
+                      name="Content Type">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">ContentType</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Modified]"
+                      dataType="dbTimeStamp"
+                      description="Modified"
+                      name="Modified">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Modified</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Created]"
+                      dataType="dbTimeStamp"
+                      description="Created"
+                      name="Created">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Created</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Created By]"
+                      dataType="wstr"
+                      description="Created By"
+                      length="100"
+                      name="Created By">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Author</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Modified By]"
+                      dataType="wstr"
+                      description="Modified By"
+                      length="100"
+                      name="Modified By">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Editor</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Has Copy Destinations]"
+                      dataType="bool"
+                      description="Has Copy Destinations"
+                      name="Has Copy Destinations">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">_HasCopyDestinations</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Copy Source]"
+                      dataType="wstr"
+                      description="Copy Source"
+                      length="255"
+                      name="Copy Source">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">_CopySource</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[owshiddenversion]"
+                      dataType="i4"
+                      description="owshiddenversion"
+                      name="owshiddenversion">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">owshiddenversion</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Workflow Version]"
+                      dataType="i4"
+                      description="Workflow Version"
+                      name="Workflow Version">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">WorkflowVersion</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[UI Version]"
+                      dataType="i4"
+                      description="UI Version"
+                      name="UI Version">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">_UIVersion</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Version]"
+                      dataType="wstr"
+                      description="Version"
+                      length="255"
+                      name="Version">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">_UIVersionString</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Attachments]"
+                      dataType="bool"
+                      description="Attachments"
+                      name="Attachments">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Attachments</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Edit]"
+                      dataType="wstr"
+                      description="Edit"
+                      length="4000"
+                      name="Edit">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Edit</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Select]"
+                      dataType="wstr"
+                      description="Select"
+                      length="4000"
+                      name="Select">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">SelectTitle</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Instance ID]"
+                      dataType="i4"
+                      description="Instance ID"
+                      name="Instance ID">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">InstanceID</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Order]"
+                      dataType="r8"
+                      description="Order"
+                      name="Order">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Order</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[GUID]"
+                      dataType="guid"
+                      description="GUID"
+                      name="GUID">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">GUID</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Workflow Instance ID]"
+                      dataType="guid"
+                      description="Workflow Instance ID"
+                      name="Workflow Instance ID">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">WorkflowInstanceID</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Effective Permissions Mask]"
+                      dataType="wstr"
+                      description="Effective Permissions Mask"
+                      length="4000"
+                      name="Effective Permissions Mask">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">PermMask</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Name (FileLeafRef)]"
+                      dataType="wstr"
+                      description="Name"
+                      length="256"
+                      name="Name (FileLeafRef)">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">FileLeafRef</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[HTML File Type]"
+                      dataType="wstr"
+                      description="HTML File Type"
+                      length="4000"
+                      name="HTML File Type">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">HTML_x0020_File_x0020_Type</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Edit Menu Table Start (_EditMenuTableStart)]"
+                      dataType="wstr"
+                      description="Edit Menu Table Start"
+                      length="4000"
+                      name="Edit Menu Table Start (_EditMenuTableStart)">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">_EditMenuTableStart</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Edit Menu Table Start (_EditMenuTableStart2)]"
+                      dataType="wstr"
+                      description="Edit Menu Table Start"
+                      length="4000"
+                      name="Edit Menu Table Start (_EditMenuTableStart2)">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">_EditMenuTableStart2</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Edit Menu Table End]"
+                      dataType="wstr"
+                      description="Edit Menu Table End"
+                      length="4000"
+                      name="Edit Menu Table End">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">_EditMenuTableEnd</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Name (LinkFilenameNoMenu)]"
+                      dataType="wstr"
+                      description="Name"
+                      length="4000"
+                      name="Name (LinkFilenameNoMenu)">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">LinkFilenameNoMenu</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Name (LinkFilename)]"
+                      dataType="wstr"
+                      description="Name"
+                      length="4000"
+                      name="Name (LinkFilename)">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">LinkFilename</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Name (LinkFilename2)]"
+                      dataType="wstr"
+                      description="Name"
+                      length="4000"
+                      name="Name (LinkFilename2)">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">LinkFilename2</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Type]"
+                      dataType="wstr"
+                      description="Type"
+                      length="4000"
+                      name="Type">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">DocIcon</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Server Relative URL]"
+                      dataType="wstr"
+                      description="Server Relative URL"
+                      length="4000"
+                      name="Server Relative URL">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">ServerUrl</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Encoded Absolute URL]"
+                      dataType="wstr"
+                      description="Encoded Absolute URL"
+                      length="4000"
+                      name="Encoded Absolute URL">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">EncodedAbsUrl</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[File Name]"
+                      dataType="wstr"
+                      description="File Name"
+                      length="4000"
+                      name="File Name">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">BaseName</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Level]"
+                      dataType="i4"
+                      description="Level"
+                      name="Level">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">_Level</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Is Current Version]"
+                      dataType="bool"
+                      description="Is Current Version"
+                      name="Is Current Version">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">_IsCurrentVersion</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Hardware Lookup Choices]"
+                      dataType="wstr"
+                      description="Hardware Lookup Choices"
+                      length="255"
+                      name="Hardware Lookup Choices">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Hardware_$$LookupChoices</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[URL Path Lookup Values]"
+                      dataType="wstr"
+                      description="URL Path Lookup Values"
+                      length="255"
+                      name="URL Path Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">FileRef_$$LookupValue</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Path Lookup Values]"
+                      dataType="wstr"
+                      description="Path Lookup Values"
+                      length="255"
+                      name="Path Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">FileDirRef_$$LookupValue</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Modified Lookup Values]"
+                      dataType="wstr"
+                      description="Modified Lookup Values"
+                      length="255"
+                      name="Modified Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Last_x0020_Modified_$$LookupValue</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Created Lookup Values]"
+                      dataType="wstr"
+                      description="Created Lookup Values"
+                      length="255"
+                      name="Created Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Created_x0020_Date_$$LookupValue</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Item Type Lookup Values]"
+                      dataType="wstr"
+                      description="Item Type Lookup Values"
+                      length="255"
+                      name="Item Type Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">FSObjType_$$LookupValue</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Sort Type Lookup Values]"
+                      dataType="wstr"
+                      description="Sort Type Lookup Values"
+                      length="255"
+                      name="Sort Type Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">SortBehavior_$$LookupValue</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Unique Id Lookup Values]"
+                      dataType="wstr"
+                      description="Unique Id Lookup Values"
+                      length="255"
+                      name="Unique Id Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">UniqueId_$$LookupValue</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Client Id Lookup Values]"
+                      dataType="wstr"
+                      description="Client Id Lookup Values"
+                      length="255"
+                      name="Client Id Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">SyncClientId_$$LookupValue</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[ProgId Lookup Values]"
+                      dataType="wstr"
+                      description="ProgId Lookup Values"
+                      length="255"
+                      name="ProgId Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">ProgId_$$LookupValue</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[ScopeId Lookup Values]"
+                      dataType="wstr"
+                      description="ScopeId Lookup Values"
+                      length="255"
+                      name="ScopeId Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">ScopeId_$$LookupValue</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Property Bag Lookup Values]"
+                      dataType="wstr"
+                      description="Property Bag Lookup Values"
+                      length="255"
+                      name="Property Bag Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">MetaInfo_$$LookupValue</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Item Child Count Lookup Values]"
+                      dataType="wstr"
+                      description="Item Child Count Lookup Values"
+                      length="255"
+                      name="Item Child Count Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">ItemChildCount_$$LookupValue</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Folder Child Count Lookup Values]"
+                      dataType="wstr"
+                      description="Folder Child Count Lookup Values"
+                      length="255"
+                      name="Folder Child Count Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">FolderChildCount_$$LookupValue</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[App Created By Lookup Values]"
+                      dataType="wstr"
+                      description="App Created By Lookup Values"
+                      length="255"
+                      name="App Created By Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">AppAuthor_$$LookupValue</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[App Modified By Lookup Values]"
+                      dataType="wstr"
+                      description="App Modified By Lookup Values"
+                      length="255"
+                      name="App Modified By Lookup Values">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">AppEditor_$$LookupValue</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Approval Status Lookup IDs]"
+                      dataType="wstr"
+                      description="Approval Status Lookup IDs"
+                      length="10"
+                      name="Approval Status Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">_ModerationStatus_$$LookupID</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[URL Path Lookup IDs]"
+                      dataType="wstr"
+                      description="URL Path Lookup IDs"
+                      length="255"
+                      name="URL Path Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">FileRef_$$LookupID</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Path Lookup IDs]"
+                      dataType="wstr"
+                      description="Path Lookup IDs"
+                      length="255"
+                      name="Path Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">FileDirRef_$$LookupID</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Modified Lookup IDs]"
+                      dataType="wstr"
+                      description="Modified Lookup IDs"
+                      length="255"
+                      name="Modified Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Last_x0020_Modified_$$LookupID</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Created Lookup IDs]"
+                      dataType="wstr"
+                      description="Created Lookup IDs"
+                      length="255"
+                      name="Created Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">Created_x0020_Date_$$LookupID</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Item Type Lookup IDs]"
+                      dataType="wstr"
+                      description="Item Type Lookup IDs"
+                      length="255"
+                      name="Item Type Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">FSObjType_$$LookupID</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Sort Type Lookup IDs]"
+                      dataType="wstr"
+                      description="Sort Type Lookup IDs"
+                      length="255"
+                      name="Sort Type Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">SortBehavior_$$LookupID</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Unique Id Lookup IDs]"
+                      dataType="wstr"
+                      description="Unique Id Lookup IDs"
+                      length="255"
+                      name="Unique Id Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">UniqueId_$$LookupID</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Client Id Lookup IDs]"
+                      dataType="wstr"
+                      description="Client Id Lookup IDs"
+                      length="255"
+                      name="Client Id Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">SyncClientId_$$LookupID</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[ProgId Lookup IDs]"
+                      dataType="wstr"
+                      description="ProgId Lookup IDs"
+                      length="255"
+                      name="ProgId Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">ProgId_$$LookupID</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[ScopeId Lookup IDs]"
+                      dataType="wstr"
+                      description="ScopeId Lookup IDs"
+                      length="255"
+                      name="ScopeId Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">ScopeId_$$LookupID</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Property Bag Lookup IDs]"
+                      dataType="wstr"
+                      description="Property Bag Lookup IDs"
+                      length="255"
+                      name="Property Bag Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">MetaInfo_$$LookupID</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Item Child Count Lookup IDs]"
+                      dataType="wstr"
+                      description="Item Child Count Lookup IDs"
+                      length="255"
+                      name="Item Child Count Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">ItemChildCount_$$LookupID</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[Folder Child Count Lookup IDs]"
+                      dataType="wstr"
+                      description="Folder Child Count Lookup IDs"
+                      length="255"
+                      name="Folder Child Count Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">FolderChildCount_$$LookupID</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[App Created By Lookup IDs]"
+                      dataType="wstr"
+                      description="App Created By Lookup IDs"
+                      length="255"
+                      name="App Created By Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">AppAuthor_$$LookupID</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output].ExternalColumns[App Modified By Lookup IDs]"
+                      dataType="wstr"
+                      description="App Modified By Lookup IDs"
+                      length="255"
+                      name="App Modified By Lookup IDs">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="SharePoint ID"
+                          name="Id">AppEditor_$$LookupID</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Public List Output]"
+              endId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="Public List Output"
+              startId="Package\Data Flow Task\SharePoint List Source.Outputs[Public List Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Data Flow Task"
+          TopLeft="504,157" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="181,42"
+          Id="Package\Data Flow Task\ADO NET Destination"
+          TopLeft="555,205" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Data Flow Task\SharePoint List Source"
+          TopLeft="554,90" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Public List Output]"
+          TopLeft="646.25,132">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,73"
+              Start="0,0"
+              End="0,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\ADO NET Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
